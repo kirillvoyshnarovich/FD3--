@@ -1,0 +1,59 @@
+﻿@font-face {
+  font-family: Roboto; 
+  src: url('../fonts/Roboto/Roboto-Light.ttf');
+}
+
+html {
+  font-size:10px;
+  font-family: Roboto; 
+
+}
+
+body {
+  margin:0;
+  background-color:#FACC40;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.product-table__name-shop {
+  font-size:2.5rem;
+  margin-left:2rem;
+}
+
+.product-table__table {
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+
+}
+
+.product-table__table-product {
+  display:flex;
+  justify-content: space-between;
+  border: 2px solid #000;
+  margin-bottom: 1rem;
+}
+
+.product-attribute {
+  width:25%;
+  text-align: center;
+  font-size:2rem;
+  display:flex;
+  flex-direction:column;
+  justify-content: space-between;
+}
+
+.column-name {
+  border-bottom: 1px solid #000;
+  margin:0;
+  padding:1.5rem;
+}
+
+.text {
+  min-height:50%;
+}
