@@ -20,7 +20,6 @@
     return {
       activeProducts:null,
       clickedButton:null,
-      className:'wrapper-products'
     };
   },
 
@@ -29,14 +28,20 @@
   },
 
   deleteProduct: function(code) {
-    
     this.setState({clickedButton:code})
+
+    this.props.products.map(product => {
+      if(product.keyid == code) {
+        if(this.message(product.name)) {delete this.props.products[this.props.products.indexOf(product)]};
+      }
+    })
+    this.setState( (prevState, props) => { return {clickedButton:prevState.clickedButton}; } );
   },
 
-  changeClassProduct: function(){
-    if(this.props.clickedButton==null) {
-        return 'wrapper-products'
-    }
+  message: function(name){
+    var answer = confirm(`Вы действительно хотите удалить ${name}`);
+
+    return answer;
   },
 
   render: function() {

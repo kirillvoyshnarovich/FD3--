@@ -28,7 +28,7 @@ var ProductItem = React.createClass({
 
 
     render: function() {
-        return  React.DOM.div({key:this.props.code, className:(this.props.clickedButton==this.props.code) ? 'wrapper-products_delete' : 'wrapper-products'},
+        return  React.DOM.div({key:this.props.code, className:'wrapper-products'},
                     React.DOM.div({className:(this.props.activeProducts==this.props.code)?'product-table__table-product_active' : 'product-table__table-product', onClick:this.changeActiveProduct},
                         React.DOM.img({className:'product-attribute product-table__table-product--image', src:this.props.imageURL, alt:'picture in card'}),
                         React.DOM.div({className:'product-attribute product-table__table-product--name'}, 
