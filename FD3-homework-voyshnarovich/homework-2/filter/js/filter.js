@@ -18,73 +18,43 @@ var Filter = React.createClass({
         };
     },
 
-    sortFilterWord: function(data) {
-        var newList = null;
+    sortFilterWord: function() {
+        var list = this.props.list.slice()
 
-        sortWord = function(list) {
-            var newList = list.map(function(el){
-                return(el);
-            });
-    
-            newList.sort(function(a, b){
+        var sortWord = function(list) {
+            list.sort(function(a, b){
                 if(a.word < b.word) { return -1; }
                 if(a.word > b.word) { return 1; }
-                return 0;
             });
-    
-            return newList;
-        },
+            return list
+        }
 
-        findWord = function(list) {
-            var newList = [];
-            list.forEach(element => {
-                if(element.word.match(regexp)){
-                    newList.push(element);
-                }
+        var filterWord = function(list) {
+            list = list.filter(function(element) {
+                var value = element.word.match(regexp) ?  true : false;
+                return value;
             })
-
-            return newList
+            return list
         }
 
-        if(typeof(data)=='boolean') {
-
-            if(this.state.activeField) {
-                var regexp = this.state.activeField;
-                newList= (data) ? findWord(sortWord(this.props.list)) : findWord(this.props.list);
-            } 
-            else {
-                newList = (data) ? sortWord(this.props.list) : this.props.list;
-            }
+        if(this.state.activeField) {
+            var regexp = new RegExp(`${this.state.activeField}`,'ig');
+            list = (this.state.valueCheckBox) ? sortWord(filterWord(list)) : filterWord(list);
 
         } else {
-
-            if (data=='') {
-
-                newList = (this.state.valueCheckBox) ? sortWord(this.props.list) : this.props.list;
-            } else {
-                var regexp = data;
-
-                newList = (this.state.valueCheckBox) ? findWord(sortWord(this.props.list)) : findWord(this.props.list);
-            }
+            list = (this.state.valueCheckBox) ? sortWord(list) : this.props.list;
         }
 
-
-        if(typeof(data)=='boolean') {
-            this.setState({listWord:newList, valueCheckBox:data})
-        } else {
-            this.setState({listWord:newList, activeField:data})
-        } 
+        this.setState({listWord:list})
     },
 
 
     changeCheckBox: function(e) {
-        this.sortFilterWord(e.target.checked)
+        this.setState({valueCheckBox:e.target.checked}, this.sortFilterWord)
     },
 
     changeTextField: function(e) {
-        var value = e.target.value;
-        var regexp = new RegExp(`${value}`,'ig');
-        this.sortFilterWord(regexp)      
+        this.setState({activeField:e.target.value}, this.sortFilterWord)
     },
 
 
