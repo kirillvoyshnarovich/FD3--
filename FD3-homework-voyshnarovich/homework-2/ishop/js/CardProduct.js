@@ -28,13 +28,12 @@
   },
 
   deleteProduct: function(code) {
-    this.setState({clickedButton:code})
-
-    this.props.products.map(product => {
-      if(product.keyid == code) {
-        if(this.message(product.name)) {delete this.props.products[this.props.products.indexOf(product)]};
+    this.props.products.forEach(function(element, index, arr) {
+      if(element.keyid==code) {
+          arr.splice(index, 1)
       }
-    })
+    });
+
     this.setState( (prevState, props) => { return {clickedButton:prevState.clickedButton}; } );
   },
 
