@@ -10,8 +10,6 @@ var Filter = React.createClass({
         ),
     },
 
-
-
     getInitialState: function() {
         return {
             valueCheckBox: false,
@@ -20,79 +18,73 @@ var Filter = React.createClass({
         };
     },
 
+    sortFilterWord: function(data) {
+        var newList = null;
 
+        sortWord = function(list) {
+            var newList = list.map(function(el){
+                return(el);
+            });
+    
+            newList.sort(function(a, b){
+                if(a.word < b.word) { return -1; }
+                if(a.word > b.word) { return 1; }
+                return 0;
+            });
+    
+            return newList;
+        },
 
-    findWord: function(el, regexp) {
-        var list = [];
-        el.forEach(element => {
-            if(element.word.match(regexp)){
-                list.push(element);
+        findWord = function(list) {
+            var newList = [];
+            list.forEach(element => {
+                if(element.word.match(regexp)){
+                    newList.push(element);
+                }
+            })
+
+            return newList
+        }
+
+        if(typeof(data)=='boolean') {
+
+            if(this.state.activeField) {
+                var regexp = this.state.activeField;
+                newList= (data) ? findWord(sortWord(this.props.list)) : findWord(this.props.list);
+            } 
+            else {
+                newList = (data) ? sortWord(this.props.list) : this.props.list;
             }
-        })
 
-        if(list.legth == 0) {
-            return this.props.list;
         } else {
-            return list
+
+            if (data=='') {
+
+                newList = (this.state.valueCheckBox) ? sortWord(this.props.list) : this.props.list;
+            } else {
+                var regexp = data;
+
+                newList = (this.state.valueCheckBox) ? findWord(sortWord(this.props.list)) : findWord(this.props.list);
+            }
         }
-    },
 
-    sortWord: function(list) {
-        var newList = list.map(function(el){
-            return(el);
-        });
 
-        newList.sort(function(a, b){
-            if(a.word < b.word) { return -1; }
-            if(a.word > b.word) { return 1; }
-            return 0;
-        });
-
-        return newList;
-    },
-
-    sortForNumber: function(list) {
-        var newList = list.map(function(el){
-            return(el)
-        })
-
-        newList.sort(function(a, b){
-            return a.key - b.key
-        });
-
-        return newList;
-
-    },
-
-    sortList: function(e) {
-        var sortList ;   
-
-        if(this.state.activeField) {
-            console.log(listWord);//ПОЧЕМУ listWord ДОСТУПЕН ТАКИМ ОБРАЗОМ ТОЖЕ, должем быть доступен только через this.state.listWord?
-            sortList = (e.target.checked) ? this.sortWord(this.state.listWord) : this.sortForNumber(this.state.listWord);
+        if(typeof(data)=='boolean') {
+            this.setState({listWord:newList, valueCheckBox:data})
+        } else {
+            this.setState({listWord:newList, activeField:data})
         } 
-        else {
-            sortList = (e.target.checked) ? this.sortWord(this.state.listWord) : this.props.list;
+    },
 
-        }
 
-        this.setState({listWord:sortList, valueCheckBox: true});
+    changeCheckBox: function(e) {
+        this.sortFilterWord(e.target.checked)
     },
 
     changeTextField: function(e) {
         var value = e.target.value;
         var regexp = new RegExp(`${value}`,'ig');
-        var newList;
-        if (value=='') {
-
-            newList = (this.state.valueCheckBox) ? this.sortWord(this.props.list) : this.props.list;
-        } else {
-
-            newList = (this.state.valueCheckBox) ? this.findWord(this.state.listWord, regexp) : this.findWord(this.props.list, regexp);
-        }
-
-        this.setState({listWord: newList, activeField:value})
-        
+        this.sortFilterWord(regexp)      
     },
 
 
@@ -103,7 +95,7 @@ var Filter = React.createClass({
 
 
         return React.DOM.div({className:"wrapper-filter"},
-            React.DOM.input({type:"checkbox", className:"wrapper-filter__sort", onChange:this.sortList}),
+            React.DOM.input({type:"checkbox", className:"wrapper-filter__sort", onChange:this.changeCheckBox}),
             React.DOM.input({type:"text", className:"wrapper-filter__field-text", onChange:this.changeTextField}),
             React.DOM.select({className:"wrapper-filter__list", size:5}, listWords),
         );
