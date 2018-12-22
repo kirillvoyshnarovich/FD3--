@@ -37,14 +37,15 @@ var Filter = React.createClass({
             return list
         }
 
-        if(this.state.activeField) {
-            var regexp = new RegExp(`${this.state.activeField}`,'ig');
-            list = (this.state.valueCheckBox) ? sortWord(filterWord(list)) : filterWord(list);
-
-        } else {
-            list = (this.state.valueCheckBox) ? sortWord(list) : this.props.list;
+        if(this.state.valueCheckBox) {
+            list = sortWord(list)
         }
 
+        if(this.state.activeField) {
+            var regexp = new RegExp(`${this.state.activeField}`,'ig');
+            list = filterWord(list)
+        }
+        
         this.setState({listWord:list})
     },
 
