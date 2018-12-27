@@ -29,27 +29,16 @@
   },
 
   deleteProduct: function(code) {
-    var list = this.state.listProduct.slice();
-    // console.log(list);
-    list.forEach(function(element, index, arr) {
+    var list = this.state.listProduct;
 
-      if(element.keyid==code) {
-          arr.splice(index, 1)
-      }
-      // console.log(index);
-      // console.log(element);
-    });
-    console.log(this.state.listProduct)
-    console.log(this.props.products)
-    console.log(list)
-    
+    var list = list.filter(function(element) {
+      var value = (element.keyid==code) ? false : true;
 
-    // this.setState({listProduct:list});
-    this.setState( (prevState, props) => { return {listProduct:prevState.listProduct}; } );
+      return value
+    })
+
     this.setState({listProduct:list})
-    this.render()
-    console.log(this.state.listProduct)
-    shouldComponentUpdate({listProduct:list})
+    
   },
 
   message: function(name){
@@ -60,7 +49,7 @@
 
   render: function() {
 
-    var tableProducts=this.props.products.map( product =>
+    var tableProducts=this.state.listProduct.map( product =>
       React.createElement(ProductItem, {key:product.keyid,
         code:product.keyid, imageURL:product.imageURL, name:product.name, price:product.price, number:product.number,
         cdchangeActiveProduct:this.changeActiveProduct, activeProducts:this.state.activeProducts, cddeleteProduct:this.deleteProduct,
