@@ -31,7 +31,7 @@ var Filter = React.createClass({
 
         var filterWord = function(list) {
             list = list.filter(function(element) {
-                var value = ~(element.word.indexOf(`${valueField}`)) ?  true : false;
+                var value = element.word.indexOf(valueField)!=-1;
                 return value;
             })
             return list

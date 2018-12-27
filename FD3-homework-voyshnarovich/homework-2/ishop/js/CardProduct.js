@@ -29,16 +29,8 @@
   },
 
   deleteProduct: function(code) {
-    var list = this.state.listProduct;
-
-    var list = list.filter(function(element) {
-      var value = (element.keyid==code) ? false : true;
-
-      return value
-    })
-
+    var list = this.state.listProduct.filter( element => element.keyid!=code );
     this.setState({listProduct:list})
-    
   },
 
   message: function(name){
