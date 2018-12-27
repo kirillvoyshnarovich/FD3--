@@ -20,6 +20,7 @@
     return {
       activeProducts:null,
       clickedButton:null,
+      listProduct: this.props.products,
     };
   },
 
@@ -28,13 +29,27 @@
   },
 
   deleteProduct: function(code) {
-    this.props.products.forEach(function(element, index, arr) {
+    var list = this.state.listProduct.slice();
+    // console.log(list);
+    list.forEach(function(element, index, arr) {
+
       if(element.keyid==code) {
           arr.splice(index, 1)
       }
+      // console.log(index);
+      // console.log(element);
     });
+    console.log(this.state.listProduct)
+    console.log(this.props.products)
+    console.log(list)
+    
 
-    this.setState( (prevState, props) => { return {clickedButton:prevState.clickedButton}; } );
+    // this.setState({listProduct:list});
+    this.setState( (prevState, props) => { return {listProduct:prevState.listProduct}; } );
+    this.setState({listProduct:list})
+    this.render()
+    console.log(this.state.listProduct)
+    shouldComponentUpdate({listProduct:list})
   },
 
   message: function(name){

@@ -31,7 +31,7 @@ var Filter = React.createClass({
 
         var filterWord = function(list) {
             list = list.filter(function(element) {
-                var value = element.word.match(regexp) ?  true : false;
+                var value = ~(element.word.indexOf(`${valueField}`)) ?  true : false;
                 return value;
             })
             return list
@@ -42,7 +42,7 @@ var Filter = React.createClass({
         }
 
         if(this.state.activeField) {
-            var regexp = new RegExp(`${this.state.activeField}`,'ig');
+            var valueField = this.state.activeField;
             list = filterWord(list)
         }
         
