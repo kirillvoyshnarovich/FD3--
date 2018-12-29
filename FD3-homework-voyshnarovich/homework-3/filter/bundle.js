@@ -24166,7 +24166,7 @@ var Filter = function (_React$Component) {
             var listWords = this.state.listWord.map(function (word) {
                 return _react2.default.createElement(
                     'option',
-                    { key: word.key, className: 'wrapper-filter__list-option', value: word.key },
+                    { key: word.key, className: 'wrapper-filter__list-option' },
                     word.word
                 );
             });
@@ -24179,7 +24179,7 @@ var Filter = function (_React$Component) {
                 _react2.default.createElement('input', { type: 'text', className: 'wrapper-filter__field-text', onChange: this.changeTextField }),
                 _react2.default.createElement(
                     'select',
-                    { defaultValue: 2, className: 'wrapper-filter__list', size: '5' },
+                    { className: 'wrapper-filter__list', size: '5' },
                     listWords
                 )
             );

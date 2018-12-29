@@ -63,14 +63,14 @@ class Filter extends React.Component {
 
 
     render() {
-        var listWords = this.state.listWord.map(word => <option key={word.key} className="wrapper-filter__list-option" value={word.key}>{word.word}</option>);
+        var listWords = this.state.listWord.map(word => <option key={word.key} className="wrapper-filter__list-option">{word.word}</option>);
         // var listWords = this.state.listWord.map(word => React.DOM.option({key:word.key, className:"wrapper-filter__list-option"}, word.word));
 
         return (
             <div className='wrapper-filter'>
                 <input type='checkbox' className='wrapper-filter__sort' onChange={this.changeCheckBox}/>
                 <input type='text' className='wrapper-filter__field-text' onChange={this.changeTextField}/>
-                <select defaultValue={2} className='wrapper-filter__list' size='5'>{listWords}</select>
+                <select className='wrapper-filter__list' size='5'>{listWords}</select>
             </div>
         )
         
