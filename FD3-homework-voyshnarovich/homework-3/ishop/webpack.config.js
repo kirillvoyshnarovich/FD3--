@@ -26,13 +26,6 @@ module.exports = {
                     use: ["css-loader"]
                 })
             },
-            {
-                test: /\.(png|jp(e*)g|svg)$/,
-                loader: 'file-loader',
-                options: {
-                    name: 'image/[name].[ext]'
-                },
-            },
         ] 
     },
     plugins: [

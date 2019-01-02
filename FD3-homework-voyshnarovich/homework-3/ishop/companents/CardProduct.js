@@ -5,12 +5,6 @@ import './CardProduct.css'
 
 import ProductItem from './Product.js'
 
-// import AKG from '../image/AKG_K550_MKIII.jpg'
-// import AudioTechnica from '../image/Audio-Technica_ATH-M50x.jpg'
-// import Fischer_Audio_Oldskool from './image/Fischer_Audio_Oldskool_70.jpg'
-// import Panasonic from '../image/Panasonic_RP-HD10E-K.jpg'
-// import Sennheiser from '../image/Sennheiser_HD_660_S.jpg'
-// import Sony from '../image/Sony_MDR-1A.jpg'
 
 class CardProduct extends React.Component{
 
