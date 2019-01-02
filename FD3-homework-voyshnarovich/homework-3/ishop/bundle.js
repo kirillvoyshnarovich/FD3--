@@ -24142,6 +24142,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// import AKG from '../image/AKG_K550_MKIII.jpg'
+// import AudioTechnica from '../image/Audio-Technica_ATH-M50x.jpg'
+// import Fischer_Audio_Oldskool from './image/Fischer_Audio_Oldskool_70.jpg'
+// import Panasonic from '../image/Panasonic_RP-HD10E-K.jpg'
+// import Sennheiser from '../image/Sennheiser_HD_660_S.jpg'
+// import Sony from '../image/Sony_MDR-1A.jpg'
+
 var CardProduct = function (_React$Component) {
   _inherits(CardProduct, _React$Component);
 
@@ -24931,7 +24938,7 @@ var ProductItem = function (_React$Component) {
                 _react2.default.createElement(
                     'div',
                     { className: this.props.activeProducts == this.props.code ? 'product-table__table-product_active' : 'product-table__table-product', onClick: this.changeActiveProduct },
-                    _react2.default.createElement('img', { className: 'product-attribute product-table__table-product--image', src: 'this.props.imageURL', alt: 'picture in card' }),
+                    _react2.default.createElement('img', { className: 'product-attribute product-table__table-product--image', src: this.props.imageURL, alt: 'picture in card' }),
                     _react2.default.createElement(
                         'div',
                         { className: 'product-attribute product-table__table-product--name' },
@@ -25033,7 +25040,7 @@ exports.default = ProductItem;
 /* 25 */
 /***/ (function(module, exports) {
 
-module.exports = [{"name":"Sony","price":1000,"imageURL":"image/Sony_MDR-1A.jpg","number":4,"keyid":1},{"name":"Sennheiser","price":2000,"imageURL":"image/Sennheiser_HD_660_S.jpg","number":7,"keyid":2},{"name":"AKG","price":3000,"imageURL":"image/AKG_K550_MKIII.jpg","number":9,"keyid":3},{"name":"Fischer Audio","price":4000,"imageURL":"image/Fischer_Audio_Oldskool_70.jpg","number":14,"keyid":4},{"name":"Audio-Technica","price":5000,"imageURL":"image/Audio-Technica_ATH-M50x.jpg","number":11,"keyid":5},{"name":"Panasonic","price":6000,"imageURL":"image/Panasonic_RP-HD10E-K.jpg","number":2,"keyid":6}]
+module.exports = [{"name":"Sony","price":1000,"imageURL":"../image/Sony_MDR-1A.jpg","number":4,"keyid":1},{"name":"Sennheiser","price":2000,"imageURL":"../image/Sennheiser_HD_660_S.jpg","number":7,"keyid":2},{"name":"AKG","price":3000,"imageURL":"../image/AKG_K550_MKIII.jpg","number":9,"keyid":3},{"name":"Fischer Audio","price":4000,"imageURL":"../image/Fischer_Audio_Oldskool_70.jpg","number":14,"keyid":4},{"name":"Audio-Technica","price":5000,"imageURL":"../image/Audio-Technica_ATH-M50x.jpg","number":11,"keyid":5},{"name":"Panasonic","price":6000,"imageURL":"../image/Panasonic_RP-HD10E-K.jpg","number":2,"keyid":6}]
 
 /***/ })
 /******/ ]);

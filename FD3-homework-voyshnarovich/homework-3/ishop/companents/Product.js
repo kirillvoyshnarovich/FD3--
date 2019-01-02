@@ -34,7 +34,7 @@ class ProductItem extends React.Component {
         return (
             <div key={this.props.code} className='wrapper-products'>
                 <div className={(this.props.activeProducts==this.props.code)?'product-table__table-product_active' : 'product-table__table-product'} onClick={this.changeActiveProduct}>
-                    <img className='product-attribute product-table__table-product--image' src='this.props.imageURL' alt='picture in card'/>
+                    <img className='product-attribute product-table__table-product--image' src={this.props.imageURL} alt='picture in card'/>
                     <div className='product-attribute product-table__table-product--name'>
                         <p className='column-name'>Name Product</p>
                         <p className='text'>{this.props.name}</p>
