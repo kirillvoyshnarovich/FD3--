@@ -1,0 +1,48 @@
+    [ 
+      {"name":"Sony",
+        "price":1000,"imageURL":"../image/Sony_MDR-1A.jpg", 
+        "number":4, 
+        "keyid":1, 
+        "description": "Give your music the purity it deserves. With a frequency range extending up to 100 kHz  the High-Resolution Audio MDR-1A headphones capture the true essence of each track — so you’ll hear music that’s  closer to the original studio master. From deep beats to soaring vocals, sound stays true for an authentic and precise experience."
+      },
+
+      {"name":"Sennheiser",
+       "price":2000,
+       "imageURL":"../image/Sennheiser_HD_660_S.jpg",
+       "number":7, 
+       "keyid":2,
+       "description":  "The HD 660 S Open-Back Dynamic Headphones from Sennheiser are headphones for the passionate audiophile and are crafted for the most demanding listener. Built with a transducer design that delivers lower harmonic distortion, they provide a natural, lifelike audio experience and can be used to produce crisp bass, transparent mid-frequency response, and a natural treble when connected to high-res players or portable audio devices."
+      },
+
+      {"name":"AKG",
+       "price":3000,
+       "imageURL":"../image/AKG_K550_MKIII.jpg",
+       "number":9, 
+       "keyid":3,
+       "description": "Open sound has never been such a private experience. With the K550s, AKG engineers have struck a masterful balance between the noise-isolating qualities of closed back headphones and the spacious, dimensional sound of an open-back design – creating reference class headphones ideal for private listening both at home and on the go. 50mm drivers, the largest in our product line, deliver great AKG sound from your hi-fi system or virtually any portable device. The large ear cups and new headband design ensure an amazingly comfortable fit, and the 2D-Axis mechanism folds flat to stow or go. "
+      },
+
+      {"name":"Fischer Audio",
+        "price":4000,
+        "imageURL":"../image/Fischer_Audio_Oldskool_70.jpg",
+        "number":14,
+        "keyid":4,
+        "description": "To achieve exact and convenient custom setting of the earphones, specialists realized an interesting design that ensured maximum comfort during operation. It was possible to achieve this effect due to the implementation of ergonomic research results. Oldskoolâ€™70 combine a stylish appearance and a classical touch being in perfect harmony with quality modern materials. Thanks to this, it is easy and comfortable to wear them. Because of quality classical basis, the earphones have a robust design in the best traditions of the Golden Audio Age and a thoroughgoing sound quality."
+      },
+
+      {"name":"Audio-Technica",
+        "price":5000,
+        "imageURL":"../image/Audio-Technica_ATH-M50x.jpg",
+        "number":11,
+        "keyid":5,
+        "description": "As the most critically acclaimed model in the M-Series line, the ATH-M50 is praised by top audio engineers and pro audio reviewers year after year. Now, the ATH-M50x professional monitor headphones feature the same coveted sonic signature, with the added feature of detachable cables. From the large aperture drivers, sound isolating earcups and robust construction, the M50x provides an unmatched experience for the most critical audio professionals"
+      },
+
+      {"name":"Panasonic",
+        "price":6000,
+        "imageURL":"../image/Panasonic_RP-HD10E-K.jpg",
+        "number":2,
+        "keyid":6,
+        "description":"There is a 50mm speaker, neodymium magnets, and a frequency range of 4Hz to 50kHz. The metal-coated MLF membrane uses hundreds of layers to achieve HD audio with minimal distortion and the anti-vibration frame of the loudspeaker with calculated gaps helps to suppress unnecessary resonance and vibration. For a maximum frame effect, PN041 material with polylactic acid was used."
+      }
+    ]
