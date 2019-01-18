@@ -21,15 +21,14 @@ class CardEditor extends React.Component {
             PropTypes.string,
             PropTypes.number
         ]),
-        description:PropTypes.string,
-        key:PropTypes.number
+        description:PropTypes.string
     }
 
     constructor (props, context) {
         super(props, context)
 
         this.validationForm = (props.workMode == 2) ? true : false;
-         
+
         this.state = {
             workMode: this.props.workMode,
             code: this.props.code,
@@ -44,6 +43,7 @@ class CardEditor extends React.Component {
             checkValidationInputNumber: this.validationForm,
             checkValidationInputDescription: this.validationForm,
             validationForm: this.validationForm
+
         }
 
     }
@@ -67,7 +67,7 @@ class CardEditor extends React.Component {
     }
 
     componentWillReceiveProps (nextProps) {
-        console.log('Первое монтирование')
+        this.setState({workMode:2})
     }
 
     validation = (e) => {
@@ -176,7 +176,7 @@ class CardEditor extends React.Component {
 
         if(this.state.workMode == 1) {
             return (
-                <div className="product-card__view">
+                <div className="product-card__view" /*key={this.props.code}*/>
                     <h3 className='product-card__item product-card__view-name'>{this.state.valueName}</h3>
                     <p className='product-card__item product-card__view-number'>
                         <span className="product-card__category">Quantity:</span>
@@ -194,10 +194,10 @@ class CardEditor extends React.Component {
             )
         } else if(this.state.workMode == 2) {
             return (
-                <div className="product-card__edit">
+                <div className="product-card__edit" /*key={this.props.code}*/>
                     <h3 className="product-card__edit-heading">Edit Existing Product</h3>
                     <p className="product-card__edit-id"><span className="product-card__edit-id-text">ID</span>{this.props.code}</p>
-                    <p><span>Name</span><input type="text" name="name" className="product-card__edit-field product-card__edit-name"  pattern="[\w'-\s]{3,20}" minLength="3" value={this.state.valueName} onChange={this.changeField} onBlur={this.validation} required></input></p>
+                    <p><span>Name</span><input type="text" name="name" className="product-card__edit-field product-card__edit-name"  pattern="[\w'-\\s]{3,20}" minLength="3" value={this.state.valueName} onChange={this.changeField} onBlur={this.validation} required></input></p>
                     <p><span>Price</span><input type="number" name="price" className="product-card__edit-field product-card__edit-price" max="10000" min="1" step="0.01" value={this.state.valuePrice} onChange={this.changeField} onBlur={this.validation} required></input></p>
                     <p><span>Url</span><input type="text" name="url" className="product-card__edit-field product-card__edit-url" value={this.state.valueImageURL} onChange={this.changeField} onBlur={this.validation} required></input></p>
                     <p><span>Quantity</span><input type="number" name="number" className="product-card__edit-field product-card__edit-number" max="10000" min="0" step="1" value={this.state.valueNumber} onChange={this.changeField} onBlur={this.validation} required></input></p>
@@ -208,7 +208,7 @@ class CardEditor extends React.Component {
             )
         } else if(this.state.workMode == 3) {
             return (
-                <div className="product-card__edit">
+                <div className="product-card__edit" /*key={this.props.code}*/>
                     <h3 className="product-card__edit-heading">Add new product</h3>
                     <p className="product-card__edit-id"><span className="product-card__edit-id-text">ID</span><input type="text" name="id" className="product-card__edit-field product-card__edit-id" pattern="[\w-]{1,20}" minLength="3" onBlur={this.validation} onChange={this.changeField} required></input></p>
                     <p><span>Name</span><input type="text" name="name" className="product-card__edit-field product-card__edit-name"  pattern="[\w'-]{3,20}" minLength="3" onChange={this.changeField} onBlur={this.validation} required></input></p>

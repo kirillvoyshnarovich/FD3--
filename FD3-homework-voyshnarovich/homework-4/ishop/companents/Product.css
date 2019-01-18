@@ -38,13 +38,13 @@
   
   .button-delete {
     width:12.5%;
-    height:30%;
+    height:40px;
     align-self:center;
   }
 
   .button-edit {
     width:12.5%;
-    height:30%;
+    height:40px;
     align-self:center;
   }
   
@@ -60,6 +60,7 @@
   
   .product-table__table-product--image {
     width:20%;
+    height:100%;
   }
   
   .product-attribute:nth-child(2) {

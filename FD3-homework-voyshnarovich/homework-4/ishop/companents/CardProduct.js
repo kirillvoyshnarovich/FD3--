@@ -33,16 +33,12 @@ class CardProduct extends React.Component{
   }
 
   changeActiveProduct = (code) => {
-    this.setState({activeProducts:code, workMode:1})
+    return (this.state.workMode == 2) || (this.state.workMode == 3) 
+      ? null : this.setState({activeProducts:code, workMode:1}), this.setState({index:2});
   }
  
   changeCard = (code) => {
-
-    if(this.setState.workMode == 1) {
-      this.setState({activeProducts:null, workMode:2})
-      // this.setState({index:1})
-    }
-    this.setState({activeProducts:code, workMode:2})
+    this.setState({workMode:2, activeProducts: code})
   }
 
   cbchangeAddCard = (keyid, name, price, url, number, description) => {
@@ -92,7 +88,7 @@ class CardProduct extends React.Component{
 
     var tableProducts=this.state.listProduct.map( product =>
       <ProductItem key={product.keyid}
-        code={product.keyid} imageURL={product.imageURL} name={product.name} price={product.price} number={product.number}
+        code={product.keyid} imageURL={product.imageURL} workMode={this.state.workMode} name={product.name} price={product.price} number={product.number}
         cdchangeActiveProduct={this.changeActiveProduct} activeProducts={this.state.activeProducts} cddeleteProduct={this.deleteProduct}
         clickedButton={this.state.clickedButton} className={this.state} changeClassProduct={this.changeClassProduct} 
         cbchangeCard={this.changeCard}/>
@@ -109,7 +105,7 @@ class CardProduct extends React.Component{
         cbchangeCard={this.cbchangeAddCard} cbcancelChange={this.cbcancelChange}/>
       )
     } else if(this.state.activeProducts == 0) {
-      editorProduct = <CardEditor workMode={this.state.workMode} cbchangeCard={this.cbchangeAddCard} cbcancelChange={this.cbcancelChange}/>
+      editorProduct = <CardEditor code={this.state.listProduct.length + 1} workMode={this.state.workMode} cbchangeCard={this.cbchangeAddCard} cbcancelChange={this.cbcancelChange}/>
     }
 
       return (

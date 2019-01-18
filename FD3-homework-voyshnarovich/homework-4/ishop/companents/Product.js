@@ -7,6 +7,7 @@ import './Product.css'
 class ProductItem extends React.Component {
 
     static propTypes = {
+        workMode:PropTypes.number,
         code:PropTypes.number.isRequired,
         number:PropTypes.number.isRequired,
         price:PropTypes.number.isRequired,
@@ -21,7 +22,7 @@ class ProductItem extends React.Component {
     }
 
     changeCard = (e) => {
-        this.props.cbchangeCard(this.props.code)
+        this.props.cbchangeCard(this.props.code, 2);
     }
 
     changeActiveProduct = (e) => {
@@ -51,10 +52,10 @@ class ProductItem extends React.Component {
                         <p className='text'>{this.props.number}</p>
                     </div>
                 </div>,
-                <button key={this.props.code} className='button-delete' onClick={this.deleteProduct}>
+                <button key={this.props.code} className='button-delete' onClick={this.deleteProduct} disabled={(this.props.workMode == 2) || (this.props.workMode == 3)}>
                     Delete
                 </button>
-                <button key={this.props.code + 1} className='button-edit' onClick={this.changeCard}>
+                <button key={this.props.code + 1} className='button-edit' onClick={this.changeCard} disabled={(this.props.workMode == 2) || (this.props.workMode == 3)}>
                     Edit
                 </button>
             </div>    
