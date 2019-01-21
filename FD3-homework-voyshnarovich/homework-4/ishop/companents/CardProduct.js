@@ -49,17 +49,17 @@ class CardProduct extends React.Component{
         return element.keyid == this.state.activeProducts;
       })
       changedProduct[0].name = name;
-      changedProduct[0].price = price;
+      changedProduct[0].price = parseFloat(price);
       changedProduct[0].url = url;
-      changedProduct[0].number = number;
+      changedProduct[0].number = parseFloat(number);
       changedProduct[0].description = description;
       
       this.setState({activeProducts:null, workMode: 0})
     } else if(this.state.workMode == 3) {
       let newListProduct = this.state.listProduct
 
-      newListProduct.push({"keyid": keyid, "name": name, "price": price, "imageURL": url, 
-      "number":number, "description": description})
+      newListProduct.push({"keyid": parseFloat(keyid), "name": name, "price": parseFloat(price), "imageURL": url, 
+      "number":parseFloat(number), "description": description})
 
       this.setState({activeProducts:null, workMode: 0, listProduct:newListProduct})
     }

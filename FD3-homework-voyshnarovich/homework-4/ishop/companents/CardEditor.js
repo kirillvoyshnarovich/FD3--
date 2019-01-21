@@ -28,6 +28,7 @@ class CardEditor extends React.Component {
         super(props, context)
 
         this.validationForm = (props.workMode == 2) ? true : false;
+        console.log('Отработал конструктор')
 
         this.state = {
             workMode: this.props.workMode,
@@ -43,10 +44,10 @@ class CardEditor extends React.Component {
             checkValidationInputNumber: this.validationForm,
             checkValidationInputDescription: this.validationForm,
             validationForm: this.validationForm
-
         }
-
     }
+
+
 
     changeCard = (e) => {
         this.props.cbchangeCard(this.state.code, this.state.valueName, this.state.valuePrice, 
@@ -67,7 +68,10 @@ class CardEditor extends React.Component {
     }
 
     componentWillReceiveProps (nextProps) {
-        this.setState({workMode:2})
+        
+        this.setState({workMode:2, checkValidationInputName: true, checkValidationInputPrice:true, checkValidationInputImageURL:true,
+            checkValidationInputNumber:true, checkValidationInputDescription:true, validationForm:true
+        })
     }
 
     validation = (e) => {
