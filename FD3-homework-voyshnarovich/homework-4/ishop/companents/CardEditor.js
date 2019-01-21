@@ -98,17 +98,22 @@ class CardEditor extends React.Component {
 
         Validation.prototype = {
             invalidMessage: [],
-
+            
             validation: function(input) {
 
                 var validity = input.validity;
+
 
                 if(validity.patternMismatch) {
                     this.addInvalidity('This is the wrong pattern for this field');
                 }
 
                 if(validity.tooShort) {
-                    this.addInvalidity('The value in the field must be longer than 3 characters')
+                    if(input.name == 'textarea') {
+                        this.addInvalidity('The value in the field must be longer than 20 characters')
+                    } else {
+                        this.addInvalidity('The value in the field must be longer than 3 characters')
+                    } 
                 }
 
                 if (validity.rangeOverflow) {
@@ -126,13 +131,19 @@ class CardEditor extends React.Component {
                     this.addInvalidity('This number needs to be a multiple of ' + step);
                 }
 
-                if(validity.typeMismatch) {
-                    this.addInvalidity('The value does not match the specified type attribute')
+                if(validity.tooLong) {
+                    this.addInvalidity('Must not exceed 20 characters')
                 }
 
                 if(validity.valueMissing) {
-                    this.addInvalidity('Missing required value')
+                    
+                    if(input.type == 'number') {
+                        this.addInvalidity('This field must contain some numeric value')
+                    } else {
+                        this.addInvalidity('This field must contain some value')
+                    }        
                 }
+
 
             },
 
@@ -151,6 +162,11 @@ class CardEditor extends React.Component {
 
 
         if(e.target.checkValidity() == false) {
+            let errorMessage = e.target.nextElementSibling;
+            if(errorMessage) {
+                let parent = e.target.parentElement;
+                parent.removeChild(errorMessage)
+            }
 
             let inputValidation = new Validation();
             inputValidation.validation(e.target);
@@ -160,7 +176,8 @@ class CardEditor extends React.Component {
 
 
         } else {
-
+            let inputValidation = new Validation();//-эти строки удалить
+            inputValidation.validation(e.target);//-эти строки удалить
             setValidationValue(e.target, true);
             let errorMessage = e.target.nextElementSibling;
             if(errorMessage) {
@@ -197,7 +214,7 @@ class CardEditor extends React.Component {
                 <div className="product-card__edit" /*key={this.props.code}*/>
                     <h3 className="product-card__edit-heading">Edit Existing Product</h3>
                     <p className="product-card__edit-id"><span className="product-card__edit-id-text">ID</span>{this.props.code}</p>
-                    <p><span>Name</span><input type="text" name="name" className="product-card__edit-field product-card__edit-name"  pattern="[\w'-\\s]{3,20}" minLength="3" value={this.state.valueName} onChange={this.changeField} onBlur={this.validation} required></input></p>
+                    <p><span>Name</span><input type="text" name="name" className="product-card__edit-field product-card__edit-name"  pattern="[\w'-]+" minLength="3" maxLength="20" value={this.state.valueName} onChange={this.changeField} onBlur={this.validation} required></input></p>
                     <p><span>Price</span><input type="number" name="price" className="product-card__edit-field product-card__edit-price" max="10000" min="1" step="0.01" value={this.state.valuePrice} onChange={this.changeField} onBlur={this.validation} required></input></p>
                     <p><span>Url</span><input type="text" name="url" className="product-card__edit-field product-card__edit-url" value={this.state.valueImageURL} onChange={this.changeField} onBlur={this.validation} required></input></p>
                     <p><span>Quantity</span><input type="number" name="number" className="product-card__edit-field product-card__edit-number" max="10000" min="0" step="1" value={this.state.valueNumber} onChange={this.changeField} onBlur={this.validation} required></input></p>
@@ -210,8 +227,8 @@ class CardEditor extends React.Component {
             return (
                 <div className="product-card__edit" /*key={this.props.code}*/>
                     <h3 className="product-card__edit-heading">Add new product</h3>
-                    <p className="product-card__edit-id"><span className="product-card__edit-id-text">ID</span><input type="text" name="id" className="product-card__edit-field product-card__edit-id" pattern="[\w-]{1,20}" minLength="3" onBlur={this.validation} onChange={this.changeField} required></input></p>
-                    <p><span>Name</span><input type="text" name="name" className="product-card__edit-field product-card__edit-name"  pattern="[\w'-]{3,20}" minLength="3" onChange={this.changeField} onBlur={this.validation} required></input></p>
+                    <p className="product-card__edit-id"><span className="product-card__edit-id-text">ID</span><input type="text" name="id" className="product-card__edit-field product-card__edit-id" pattern="[\w-]+" maxLength="3" onBlur={this.validation} onChange={this.changeField} required></input></p>
+                    <p><span>Name</span><input type="text" name="name" className="product-card__edit-field product-card__edit-name"  pattern="[\w'-]+" minLength="3" maxLength="20" onChange={this.changeField} onBlur={this.validation} required></input></p>
                     <p><span>Price</span><input type="number" name="price" className="product-card__edit-field product-card__edit-price" max="10000" min="1" step="0.01" onChange={this.changeField} onBlur={this.validation} required></input></p>
                     <p><span>Url</span><input type="text" name="url" className="product-card__edit-field product-card__edit-url" onChange={this.changeField} onBlur={this.validation} required></input></p>
                     <p><span>Quantity</span><input type="number" name="number" className="product-card__edit-field product-card__edit-number" max="10000" min="0" step="1" onChange={this.changeField} onBlur={this.validation} required></input></p>

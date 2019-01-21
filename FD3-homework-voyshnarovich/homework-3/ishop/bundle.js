@@ -24142,13 +24142,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// import AKG from '../image/AKG_K550_MKIII.jpg'
-// import AudioTechnica from '../image/Audio-Technica_ATH-M50x.jpg'
-// import Fischer_Audio_Oldskool from './image/Fischer_Audio_Oldskool_70.jpg'
-// import Panasonic from '../image/Panasonic_RP-HD10E-K.jpg'
-// import Sennheiser from '../image/Sennheiser_HD_660_S.jpg'
-// import Sony from '../image/Sony_MDR-1A.jpg'
-
 var CardProduct = function (_React$Component) {
   _inherits(CardProduct, _React$Component);
 
