@@ -47,8 +47,6 @@ class CardEditor extends React.Component {
         }
     }
 
-
-
     changeCard = (e) => {
         this.props.cbchangeCard(this.state.code, this.state.valueName, this.state.valuePrice, 
             this.state.valueImageURL, this.state.valueNumber, this.state.valueDescription
