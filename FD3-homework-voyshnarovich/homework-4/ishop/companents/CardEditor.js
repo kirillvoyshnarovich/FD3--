@@ -11,24 +11,28 @@ class CardEditor extends React.Component {
         cbcancelChange:PropTypes.func,
         workMode:PropTypes.number,
         code:PropTypes.number,
-        name:PropTypes.string,
-        price:PropTypes.oneOfType([
-            PropTypes.number,
-            PropTypes.string
-        ]),
-        imageURL:PropTypes.string,
-        number:PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.number
-        ]),
-        description:PropTypes.string
+        // name:PropTypes.string,
+        // price:PropTypes.oneOfType([
+        //     PropTypes.number,
+        //     PropTypes.string
+        // ]),
+        // imageURL:PropTypes.string,
+        // number:PropTypes.oneOfType([
+        //     PropTypes.string,
+        //     PropTypes.number
+        // ]),
+        // description:PropTypes.string
     }
 
     constructor (props, context) {
         super(props, context)
 
         this.validationForm = (props.workMode == 2) ? true : false;
-        console.log('Отработал конструктор')
+        // console.log('Отработал конструктор')
+
+        // console.log("this.props.workMode - "+this.props.workMode)
+        // console.log("this.props.name - "+this.props.name)
+
 
         this.state = {
             workMode: this.props.workMode,
@@ -45,6 +49,11 @@ class CardEditor extends React.Component {
             checkValidationInputDescription: this.validationForm,
             validationForm: this.validationForm
         }
+
+        // console.log('checkValidationInputName - '+this.validationForm)
+        // console.log('this.state.valueName - '+this.state.valueName)
+        // console.log('this.state.workMode - '+this.state.workMode)
+
     }
 
     changeCard = (e) => {
@@ -68,12 +77,12 @@ class CardEditor extends React.Component {
     componentWillReceiveProps (nextProps) {
         
         this.setState({workMode:2, checkValidationInputName: true, checkValidationInputPrice:true, checkValidationInputImageURL:true,
-            checkValidationInputNumber:true, checkValidationInputDescription:true, validationForm:true
-        })
+            checkValidationInputNumber:true, checkValidationInputDescription:true
+        }, /*console.log('В функции componentwillReceiveprops '+this.state.checkValidationInputDescription)*/)
     }
 
     validation = (e) => {
-
+        // console.log('В функции валидации '+this.state.checkValidationInputDescription)
         let setValidationValue = (input, validityValue) => {
             switch(input.name) {
                 case 'name': this.setState({checkValidationInputName: validityValue}, checkValidationForm);
@@ -112,6 +121,7 @@ class CardEditor extends React.Component {
 
                 if(validity.tooShort) {
                     if(input.name == 'textarea') {
+                        // console.log('true input.name == "textarea"')
                         this.addInvalidity('The value in the field must be longer than 20 characters')
                     } else {
                         this.addInvalidity('The value in the field must be longer than 3 characters')
@@ -233,9 +243,9 @@ class CardEditor extends React.Component {
                     <p><span>Name</span><input type="text" name="name" className="product-card__edit-field product-card__edit-name"  pattern="[\w'-]+" minLength="3" maxLength="20" onChange={this.changeField} onBlur={this.validation} required></input></p>
                     <p><span>Price</span><input type="number" name="price" className="product-card__edit-field product-card__edit-price" max="10000" min="1" step="0.01" onChange={this.changeField} onBlur={this.validation} required></input></p>
                     <p><span>Url</span><input type="text" name="url" className="product-card__edit-field product-card__edit-url" onChange={this.changeField} onBlur={this.validation} required></input></p>
-                    <p><span>Quantity</span><input type="number" name="number" className="product-card__edit-field product-card__edit-number" max="10000" min="0" step="1" onChange={this.changeField} onBlur={this.validation} required></input></p>
-                    <p><span>Description</span><textarea name="textarea" className="product-card__edit-field textareafiald product-card__edit-description" minLength="20" onChange={this.changeField} onBlur={this.validation} required></textarea></p>
-                    {(this.state.validationForm) ? <button className="product-card-button product-card__edit-save" onClick={this.changeCard}>Save</button> : <button className="product-card-button product-card__edit-save" disabled>Save</button>}
+                    <p><span>Quantity</span><input type="number" name="number" className="product-card__edit-field product-card__edit-number" max="10000" min="0" step="1" onChange={this.changeField}  onBlur={this.validation} required></input></p>
+                    <p><span>Description</span><textarea name="textarea" className="product-card__edit-field textareafiald product-card__edit-description" minLength="20" onChange={this.changeField} value={this.state.valueDescription} onBlur={this.validation} required></textarea></p>
+                    {(this.state.validationForm) ? <button className="product-card-button product-card__edit-save" onClick={this.changeCard}>Save</button> : <button className="product-card-button product-card__edit-save" onClick={this.changeCard} disabled>Save</button>}
                     <button className="product-card-button product-card__edit-cancel" onClick={this.cancelChange}>Cancel</button>
                 </div>
             )

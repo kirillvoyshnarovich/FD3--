@@ -105,7 +105,7 @@ class CardProduct extends React.Component{
         cbchangeCard={this.cbchangeAddCard} cbcancelChange={this.cbcancelChange}/>
       )
     } else if(this.state.activeProducts == 0) {
-      editorProduct = <CardEditor code={this.state.listProduct.length + 1} workMode={this.state.workMode} cbchangeCard={this.cbchangeAddCard} cbcancelChange={this.cbcancelChange}/>
+      editorProduct = <CardEditor imageURL={false} name={false}  price={false} number={false} code={this.state.listProduct.length + 1} workMode={this.state.workMode} cbchangeCard={this.cbchangeAddCard} cbcancelChange={this.cbcancelChange}/>
     }
 
       return (

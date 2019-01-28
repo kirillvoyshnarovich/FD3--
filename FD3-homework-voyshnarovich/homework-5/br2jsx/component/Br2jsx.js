@@ -13,12 +13,17 @@ class Br2jsx extends React.Component {
     }
     
     render() {
-        let textCustom = this.state.text.split(/<br>|<br\/>|<br \/>/g).map((element, index) => {
-            return <React.Fragment key={index}>{element}<br/></React.Fragment>
+        let textCustom = this.state.text.split(/<br>|<br\/>|<br \/>/g).map((element, index, arr) => {
+            if(index !== (arr.length-1)) {
+                return <React.Fragment key={index}>{element}<br/></React.Fragment>
+            } else {
+                return <React.Fragment key={index}>{element}</React.Fragment>
+            }
+            
         })
 
         return <React.Fragment>
-                    <div class="Br2jsx">{textCustom}</div>
+                    <div className="Br2jsx">{textCustom}</div>
                 </React.Fragment>
         }
 }
