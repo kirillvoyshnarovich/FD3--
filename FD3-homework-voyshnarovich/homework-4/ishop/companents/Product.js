@@ -8,14 +8,20 @@ class ProductItem extends React.Component {
 
     static propTypes = {
         workMode:PropTypes.number,
-        code:PropTypes.number.isRequired,
+        code:PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.string
+        ]),
         number:PropTypes.number.isRequired,
         price:PropTypes.number.isRequired,
         name:PropTypes.string.isRequired,
         imageURL:PropTypes.string.isRequired,
         cdchangeActiveProduct:PropTypes.func,
         cddeleteProduct:PropTypes.func,
-        activeProducts:PropTypes.number,
+        activeProducts:PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.string
+        ]),
         clickedButton:PropTypes.number,
         changeClassProduct:PropTypes.func,
         cbchangeCard:PropTypes.func

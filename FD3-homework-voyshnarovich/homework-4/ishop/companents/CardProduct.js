@@ -58,7 +58,7 @@ class CardProduct extends React.Component{
     } else if(this.state.workMode == 3) {
       let newListProduct = this.state.listProduct
 
-      newListProduct.push({"keyid": parseFloat(keyid), "name": name, "price": parseFloat(price), "imageURL": url, 
+      newListProduct.push({"keyid": keyid, "name": name, "price": parseFloat(price), "imageURL": url, 
       "number":parseFloat(number), "description": description})
 
       this.setState({activeProducts:null, workMode: 0, listProduct:newListProduct})
