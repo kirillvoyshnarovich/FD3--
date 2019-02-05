@@ -1,0 +1,28 @@
+.table__client {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    padding:20px 0px 20px 0px;
+    border-bottom:1px solid #9e9e9e;
+}
+
+.table__client-status {
+    box-sizing:border-box;
+    padding:10px 30px;
+    background:green;
+}
+
+.table__client-status-blocked {
+    box-sizing:border-box;
+    padding:10px 30px;
+    background:red;
+}
+
+.table__client > * {
+    text-align: center;
+    width:14.2%;
+}
+
+.button {
+    padding:10px 20px;
+}

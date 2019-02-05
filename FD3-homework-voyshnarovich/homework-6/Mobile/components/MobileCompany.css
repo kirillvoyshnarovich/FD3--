@@ -1,0 +1,39 @@
+.table {
+    display:flex;
+    flex-direction: column;
+    flex-wrap:nowrap;
+}
+
+.table__heading {
+    display:flex;
+    flex-wrap:nowrap;
+    justify-content:space-around;
+    border-bottom:1px solid #9e9e9e;
+    padding:20px 0px 20px 0px;
+}
+
+.control-button {
+    border-bottom:1px solid #9e9e9e;
+    border-top:1px solid #9e9e9e;
+    padding:20px 0px 20px 0px;
+}
+
+.table__heading > * {
+    text-align: center;
+    width:14.2%;
+}
+
+
+.table__list {
+    display:flex;
+    flex-direction:column;
+    flex-wrap:nowrap;
+}
+
+.button-add-client {
+    margin-top:20px;
+}
+
+.name-company {
+    font-size:20px;
+}

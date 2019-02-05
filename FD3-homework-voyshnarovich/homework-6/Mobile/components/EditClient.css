@@ -1,0 +1,46 @@
+.editor__client-heading {
+    font-size:20px;
+    margin-left:10px;
+}
+
+.editor__client > *{
+    display:flex;
+    flex-direction:column;
+    flex-wrap:wrap;
+}
+
+.editor__client-input {
+    height:30px;
+    margin:10px;
+    margin-top:0;
+    font-size:15px;
+    width:50%;
+}
+
+/* Убираем элементы управления на input type=number */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Заканчиваем убирать элементы управления на input type=number */
+
+.input-button {
+  width:10%;
+  height:35px;
+  margin:10px;
+}
+
+.edit__client-lable {
+  margin:10px;
+}
